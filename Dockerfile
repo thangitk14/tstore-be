@@ -36,7 +36,7 @@ RUN apt-get update
 #RUN apt-get install -y python
 # RUN apk add --no-cache python3
 
-RUN npm install -g @medusajs/medusa-cli
+RUN npm install @medusajs/medusa-cli
 
 RUN npm i --only=production
 
