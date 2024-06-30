@@ -6,7 +6,7 @@ COPY . .
 
 RUN rm -rf node_modules
 
-RUN apt-get update
+#RUN apt-get update
 
 #RUN apt-get install -y python
 
@@ -31,7 +31,7 @@ COPY .env .
 
 COPY medusa-config.js .
 
-RUN apt-get update
+#RUN apt-get update
 
 #RUN apt-get install -y python
 # RUN apk add --no-cache python3
