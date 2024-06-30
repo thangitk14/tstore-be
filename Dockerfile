@@ -1,4 +1,4 @@
-FROM node:17.1.0 as builder
+FROM node:20.10.0 as builder
 
 WORKDIR /app/medusa
 
@@ -17,7 +17,7 @@ RUN npm install --loglevel=error
 RUN npm run build
 
 
-FROM node:17.1.0
+FROM node:20.10.0
 
 WORKDIR /app/medusa
 
@@ -36,7 +36,7 @@ COPY medusa-config.js .
 #RUN apt-get install -y python
 # RUN apk add --no-cache python3
 
-RUN npm install @medusajs/medusa-cli
+RUN npm install -g @medusajs/medusa-cli
 
 RUN npm i --only=production
 
