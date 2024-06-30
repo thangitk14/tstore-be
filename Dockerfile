@@ -8,7 +8,7 @@ RUN rm -rf node_modules
 
 RUN apt-get update
 
-RUN apt-get install -y python
+#RUN apt-get install -y python
 
 RUN npm install -g npm@latest
 
@@ -33,7 +33,7 @@ COPY medusa-config.js .
 
 RUN apt-get update
 
-RUN apt-get install -y python
+#RUN apt-get install -y python
 # RUN apk add --no-cache python3
 
 RUN npm install -g @medusajs/medusa-cli
