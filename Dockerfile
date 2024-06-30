@@ -1,4 +1,4 @@
-FROM node:20.10.0 as builder
+FROM node:17.1.0 as builder
 
 WORKDIR /app/medusa
 
@@ -17,7 +17,7 @@ RUN npm install --loglevel=error
 RUN npm run build
 
 
-FROM node:20.10.0
+FROM node:17.1.0
 
 WORKDIR /app/medusa
 
