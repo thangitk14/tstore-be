@@ -21,8 +21,8 @@ COPY medusa-config.js .
 # #RUN apt-get update
 # #RUN apt-get install -y python
 # # RUN apk add --no-cache python3
-RUN npm install -g --legacy-peer-deps
-RUN npm install -g @medusajs/medusa-cli
+RUN npm install --global --legacy-peer-deps
+RUN npm install --global @medusajs/medusa-cli
 # RUN npm install --only=production
 # COPY --from=builder /app/medusa/dist ./dist
 # EXPOSE 9000
