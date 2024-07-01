@@ -12,7 +12,6 @@ RUN npm install --loglevel=error
 
 RUN npm run build
 
-
 FROM node:22
 
 WORKDIR /app/medusa
@@ -21,7 +20,7 @@ RUN mkdir dist
 
 COPY package*.json ./ 
 
-COPY develop.sh .
+# COPY develop.sh .
 
 COPY .env .
 
