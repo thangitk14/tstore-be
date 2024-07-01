@@ -1,14 +1,10 @@
 FROM node:22 as builder
 WORKDIR /app/medusa
+RUN npm install -g yarn
 COPY . . 
 RUN rm -rf node_modules
-
-#RUN apt-get update
-#RUN apt-get install -y python
-#RUN npm install -g npm@latest
-
-RUN npm install --loglevel=verbose
-RUN npm run build
+RUN yarn install
+RUN yarn build
 
 FROM node:22
 WORKDIR /app/medusa
@@ -18,12 +14,8 @@ COPY develop.sh .
 COPY .env .
 COPY medusa-config.js .
 
-#RUN apt-get update
-#RUN apt-get install -y python
-# RUN apk add --no-cache python3
-
 RUN npm install -g @medusajs/medusa-cli
-RUN npm install --only=production --loglevel verbose
+RUN yarn install
 COPY --from=builder /app/medusa/dist ./dist
 
 EXPOSE 9000
