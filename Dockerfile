@@ -1,4 +1,4 @@
-FROM node:20.10.0
+FROM node:20.10.0 as builder
 
 WORKDIR /app/medusa
 
@@ -15,6 +15,11 @@ RUN npm install -g npm@latest
 RUN npm install --loglevel=error
 
 RUN npm run build
+
+
+FROM node:20.10.0
+
+WORKDIR /app/medusa
 
 RUN mkdir dist
 
