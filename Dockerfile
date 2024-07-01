@@ -1,10 +1,9 @@
 FROM node:22 as builder
 WORKDIR /app/medusa
-RUN npm install -g yarn
 COPY . . 
 RUN rm -rf node_modules
-RUN yarn install
-RUN yarn build
+RUN npm install --loglevel=verbose
+RUN npm run build
 
 FROM node:22
 WORKDIR /app/medusa
@@ -15,7 +14,7 @@ COPY .env .
 COPY medusa-config.js .
 
 RUN npm install -g @medusajs/medusa-cli
-RUN yarn install
+RUN npm install --only=production --loglevel=verbose
 COPY --from=builder /app/medusa/dist ./dist
 
 EXPOSE 9000
