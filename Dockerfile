@@ -1,23 +1,27 @@
-FROM node:20 as builder
-WORKDIR /app/medusa
-COPY . . 
-RUN rm -rf node_modules
+# FROM node:20 as builder
+# WORKDIR /app/medusa
+# COPY . . 
+# RUN rm -rf node_modules
 
-#RUN apt-get update
-#RUN apt-get install -y python
-#RUN npm install -g npm@latest
+# #RUN apt-get update
+# #RUN apt-get install -y python
+# #RUN npm install -g npm@latest
 
-RUN npm install --loglevel=error
-RUN npm run build
+# # RUN npm install --loglevel=error
+# RUN npm run build
 
 FROM node:20
 WORKDIR /app/medusa
+COPY . . 
 RUN mkdir dist
 COPY package*.json ./ 
 COPY develop.sh .
 COPY .env .
 COPY medusa-config.js .
+RUN rm -rf node_modules
 RUN npm install 
+RUN npm run build
+
 # RUN npm install --only=production
 COPY --from=builder /app/medusa/dist ./dist
 EXPOSE 9000
