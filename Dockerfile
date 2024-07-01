@@ -32,7 +32,7 @@ RUN npm install -g cross-env
 
 RUN npm i --only=production
 
-#RUN medusa migrations run
+RUN medusa migrations run
 
 COPY --from=builder /app/medusa/dist ./dist
 
