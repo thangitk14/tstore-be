@@ -11,12 +11,12 @@
 # RUN npm run build
 
 FROM node:17
-# WORKDIR /app/medusa
-# RUN mkdir dist
-# COPY package*.json ./ 
-# COPY develop.sh .
-# COPY .env .
-# COPY medusa-config.js .
+WORKDIR /app/medusa
+RUN mkdir dist
+COPY package*.json ./ 
+COPY develop.sh .
+COPY .env .
+COPY medusa-config.js .
 
 # #RUN apt-get update
 # #RUN apt-get install -y python
