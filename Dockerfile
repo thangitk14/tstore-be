@@ -1,4 +1,4 @@
-FROM node:20.10.0 as builder
+FROM node:20.10.0
 
 WORKDIR /app/medusa
 
@@ -10,16 +10,11 @@ RUN rm -rf node_modules
 
 #RUN apt-get install -y python
 
-#RUN npm install -g npm@latest
+RUN npm install -g npm@latest
 
 RUN npm install --loglevel=error
 
 RUN npm run build
-
-
-FROM node:20.10.0
-
-WORKDIR /app/medusa
 
 RUN mkdir dist
 
@@ -38,8 +33,7 @@ COPY medusa-config.js .
 
 #RUN npm install -g @medusajs/medusa-cli
 
-#RUN npm i --only=production
-RUN npm i 
+RUN npm install --only=production
 
 COPY --from=builder /app/medusa/dist ./dist
 
