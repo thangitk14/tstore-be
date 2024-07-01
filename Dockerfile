@@ -19,6 +19,7 @@ COPY develop.sh .
 COPY .env .
 COPY medusa-config.js .
 RUN rm -rf node_modules
+RUN yarn config set registry https://registry.npmjs.org/
 RUN yarn install
 RUN yarn build
 
