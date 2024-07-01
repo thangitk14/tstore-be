@@ -19,8 +19,8 @@ COPY develop.sh .
 COPY .env .
 COPY medusa-config.js .
 RUN rm -rf node_modules
-RUN npm install --legacy-peer-deps
-RUN npm run build
+RUN yarn install
+RUN yarn build
 
 # RUN npm install --only=production
 #COPY --from=builder /app/medusa/dist ./dist
