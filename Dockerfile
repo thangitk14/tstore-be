@@ -38,7 +38,8 @@ COPY medusa-config.js .
 
 #RUN npm install -g @medusajs/medusa-cli
 
-RUN npm i --only=production
+#RUN npm i --only=production
+RUN npm i 
 
 COPY --from=builder /app/medusa/dist ./dist
 
