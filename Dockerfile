@@ -10,7 +10,7 @@
 # # RUN npm install --loglevel=error
 # RUN npm run build
 
-FROM node:20
+FROM node:22
 WORKDIR /app/medusa
 COPY . . 
 RUN mkdir dist
