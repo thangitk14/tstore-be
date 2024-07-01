@@ -20,6 +20,8 @@ COPY .env .
 COPY medusa-config.js .
 RUN rm -rf node_modules
 RUN yarn config set registry https://registry.npmjs.org/
+RUN npm config rm proxy
+RUN npm config rm https-proxy
 RUN yarn install
 RUN yarn build
 
