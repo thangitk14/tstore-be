@@ -35,7 +35,7 @@ COPY --from=builder /app/medusa/dist ./dist
 
 EXPOSE 9000
 
-ENTRYPOINT ["./develop.sh", "start"]
+ENTRYPOINT ["npm", "run", "start"]
 
 ## RUN Docker desktop
 ##
@@ -43,9 +43,12 @@ ENTRYPOINT ["./develop.sh", "start"]
 ## vi /etc/docker/daemon.json
 ## { "dns": ["8.8.8.8", "8.8.4.4"] }
 ##
+## Migrations
+## medusa migrations run
+##
 ## Build: 
 ##    docker build . -t <name>
-##    docker build . -t tstore
+##    docker build . -t tstore-be
 ## Run: 
 ##    docker run --name <name container> -p <port local>:<port host>/tcp -d <name image>
-##    docker run --name tstore_container -p 9000:8000/tcp -d tstore
+##    docker run --name tstore-be_container -p 9000:9000/tcp -d tstore-be
