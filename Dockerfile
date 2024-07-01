@@ -30,13 +30,13 @@ RUN npm install -g @medusajs/medusa-cli
 
 RUN npm i --only=production
 
-RUN medusa migrations run
+#RUN medusa migrations run
 
 COPY --from=builder /app/medusa/dist ./dist
 
 EXPOSE 9000
 
-ENTRYPOINT ["npm", "run", "start"]
+ENTRYPOINT ["medusa", "start"]
 
 ## RUN Docker desktop
 ##
