@@ -19,11 +19,12 @@ COPY develop.sh .
 COPY .env .
 COPY medusa-config.js .
 RUN rm -rf node_modules
-RUN yarn config set registry https://registry.npmjs.org/
-RUN npm config rm proxy
-RUN npm config rm https-proxy
-RUN yarn install
-RUN yarn build
+RUN npm cache clean --force
+RUN npm config set registry https://registry.npmjs.org/
+RUN npm install --loglevel verbose --legacy-peer-deps
+
+# RUN yarn install
+# RUN yarn build
 
 # RUN npm install --only=production
 #COPY --from=builder /app/medusa/dist ./dist
