@@ -17,7 +17,8 @@ COPY package*.json ./
 COPY develop.sh .
 COPY .env .
 COPY medusa-config.js .
-RUN npm install --only=production
+RUN npm install 
+# RUN npm install --only=production
 COPY --from=builder /app/medusa/dist ./dist
 EXPOSE 9000
 ENTRYPOINT ["./develop.sh", "start"]
