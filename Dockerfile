@@ -23,9 +23,9 @@ RUN npm install
 RUN npm run build
 
 # RUN npm install --only=production
-COPY --from=builder /app/medusa/dist ./dist
-EXPOSE 9000
-ENTRYPOINT ["./develop.sh", "start"]
+#COPY --from=builder /app/medusa/dist ./dist
+#EXPOSE 9000
+#ENTRYPOINT ["./develop.sh", "start"]
 
 # #RUN apt-get update
 # #RUN apt-get install -y python
