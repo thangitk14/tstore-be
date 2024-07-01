@@ -1,4 +1,4 @@
-# FROM node:17 as builder
+# FROM node:20 as builder
 # WORKDIR /app/medusa
 # COPY . . 
 # RUN rm -rf node_modules
@@ -22,7 +22,9 @@ COPY medusa-config.js .
 # #RUN apt-get install -y python
 # # RUN apk add --no-cache python3
 #RUN npm install --legacy-peer-deps
-RUN npm install -g @medusajs/medusa-cli
+# RUN npm install -g @medusajs/medusa-cli
+RUN npm install -g yarn
+RUN yarn install
 # RUN npm install --only=production
 # COPY --from=builder /app/medusa/dist ./dist
 # EXPOSE 9000
