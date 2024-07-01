@@ -10,7 +10,7 @@ RUN rm -rf node_modules
 
 #RUN apt-get install -y python
 
-RUN npm install -g npm@latest
+#RUN npm install -g npm@latest
 
 RUN npm install --loglevel=error
 
@@ -38,7 +38,8 @@ COPY medusa-config.js .
 
 #RUN npm install -g @medusajs/medusa-cli
 
-RUN npm install --only=production
+#RUN npm install --only=production
+RUN npm install
 
 COPY --from=builder /app/medusa/dist ./dist
 
