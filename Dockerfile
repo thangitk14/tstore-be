@@ -19,7 +19,7 @@ COPY develop.sh .
 COPY .env .
 COPY medusa-config.js .
 RUN rm -rf node_modules
-RUN npm install --loglevel verbose
+RUN npm install --loglevel --legacy-peer-deps verbose
 RUN npm run build
 
 # RUN npm install --only=production
