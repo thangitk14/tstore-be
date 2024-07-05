@@ -6,6 +6,10 @@ COPY . .
 
 RUN rm -rf node_modules
 
+RUN rm -rf dist
+
+RUN rm -rf .cache
+
 RUN npm install -g npm@latest
 
 RUN npm install --loglevel=error
